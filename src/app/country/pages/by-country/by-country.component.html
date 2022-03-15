@@ -18,7 +18,7 @@
 <hr />
 <div *ngIf="isError" class="alert alert-danger">No hay resultados</div>
 
-<div *ngIf="!isError" class="row">
+<div *ngIf="countries.length > 0" class="row">
   <div class="col">
     <table class="table table-hiver">
       <thead>
@@ -29,12 +29,14 @@
         <th></th>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>bandera</td>
-          <td>nombre</td>
-          <td>12563</td>
-          <td></td>
+        <tr *ngFor="let country of countries; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td><img class="small-flag" [src]="country.flags.svg" alt=""></td>
+          <td>{{ country.name.common }}</td>
+          <td>{{ country.population | number }}</td>
+          <td>
+              <a [routerLink]="['/country', country.cca2]">Ver más...</a>
+          </td>
         </tr>
       </tbody>
     </table>
