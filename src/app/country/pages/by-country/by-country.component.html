@@ -16,9 +16,9 @@
 </div>
 
 <hr />
-<div class="alert alert-danger">No hay resultados</div>
+<div *ngIf="isError" class="alert alert-danger">No hay resultados</div>
 
-<div class="row">
+<div *ngIf="!isError" class="row">
   <div class="col">
     <table class="table table-hiver">
       <thead>

@@ -7,14 +7,18 @@ import { CountryService } from '../../services/country.service';
   styles: [],
 })
 export class ByCountryComponent {
-  country: string = 'Honduras';
+  country: string = '';
+  isError: boolean = false
 
   constructor(private countryService: CountryService) {}
 
   search() {
+    this.isError = false;
     console.log(this.country);
     this.countryService.searchCountry(this.country).subscribe((resp) => {
       console.log(resp);
+    }, (err) => {
+      this.isError = true;
     });
   }
 }
