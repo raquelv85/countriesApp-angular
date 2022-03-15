@@ -1,17 +1,30 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-country-input',
   templateUrl: './country-input.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class CountryInputComponent {
-
+export class CountryInputComponent implements OnInit {
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
-  country: string = "";
+  @Output() onDebounce: EventEmitter<string> = new EventEmitter();
+  country: string = '';
 
-  search(){
-    this.onEnter.emit( this.country );
+  debouncer: Subject<string> = new Subject();
+
+  ngOnInit(): void {
+    this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
+      this.onDebounce.emit(value)
+    });
+  }
+
+  search() {
+    this.onEnter.emit(this.country);
+  }
+
+  keyPress() {
+    this.debouncer.next(this.country);
   }
 }

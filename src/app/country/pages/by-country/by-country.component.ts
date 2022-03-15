@@ -25,4 +25,8 @@ export class ByCountryComponent {
       this.countries = []
     });
   }
+
+  suggest(country: string){
+    this.isError = false;
+  }
 }
