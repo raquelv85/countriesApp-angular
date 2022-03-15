@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'app-by-country',
   templateUrl: './by-country.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class ByCountryComponent  {
+export class ByCountryComponent {
+  country: string = 'Honduras';
 
-  country: string = "Honduras"
+  constructor(private countryService: CountryService) {}
 
-  constructor() { }
-
-  search(){
+  search() {
     console.log(this.country);
-    
+    this.countryService.searchCountry(this.country).subscribe((resp) => {
+      console.log(resp);
+    });
   }
-
-
 }
