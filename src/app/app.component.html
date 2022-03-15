@@ -1,5 +1,29 @@
-<app-by-capital></app-by-capital>
-<app-by-country></app-by-country>
-<app-sidebar></app-sidebar>
-<app-by-region></app-by-region>
-<app-show-country></app-show-country>
+<div class="row container mt-4">
+  <div class="col-3">
+    <h2>Búsquedas</h2>
+    <hr />
+    <ul class="list-group">
+      <li
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="list-group-item"
+      >
+        Buscar país
+      </li>
+      <li routerLink="region" routerLinkActive="active" class="list-group-item">
+        Por región
+      </li>
+      <li
+        routerLink="capital"
+        routerLinkActive="active"
+        class="list-group-item"
+      >
+        Por capital
+      </li>
+    </ul>
+  </div>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+</div>
