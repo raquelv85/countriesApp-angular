@@ -1,1 +1,52 @@
-<p>show-country works!</p>
+<div *ngIf="country.length === 0; else divCountry" class="alert alert-info">
+  Espere por favor...
+</div>
+<ng-template #divCountry>
+  <div *ngFor="let item of country; let i = index">
+    <div class="row">
+      <div class="col-12">
+        <h1>
+          País: <small>{{ item.name.common }}</small>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <h3>Bandera</h3>
+        <img class="img-thumbnail" [src]="item.flags.svg" alt="flag" />
+      </div>
+      <div class="col">
+        <h3>Información</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Población: </strong>{{ item.population | number }}
+          </li>
+          <li class="list-group-item">
+            <strong>Código numérico: </strong>{{ item.ccn3 }}
+          </li>
+          <li class="list-group-item">
+            <strong>Código alpha3: </strong>{{ item.cca3 }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+    <h3>Traducciones</h3>
+    <div class="row">
+      <div class="col">
+        <span class="badge bg-primary me-2">{{
+          item.translations["spa"].common
+        }}</span>
+        <span class="badge bg-primary me-2">{{
+          item.translations["cym"].common
+        }}</span>
+        <span class="badge bg-primary me-2">{{
+          item.translations["deu"].common
+        }}</span>
+        <span class="badge bg-primary me-2">{{
+          item.translations["fra"].common
+        }}</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
