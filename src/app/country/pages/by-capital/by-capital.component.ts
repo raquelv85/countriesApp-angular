@@ -19,6 +19,8 @@ export class ByCapitalComponent {
     this.capital = capital;
     this.countryService.searchCapital(this.capital).subscribe(
       (resp) => {
+        console.log(resp);
+        
         this.capitals = resp;
       },
       (err) => {

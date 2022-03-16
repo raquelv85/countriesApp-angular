@@ -10,6 +10,7 @@ import { Country } from '../../interfaces/country.interface';
 export class CountryTableComponent {
 
   @Input() countries: Country[] = []
+  @Input() url = ''
 
   constructor() { }
 
