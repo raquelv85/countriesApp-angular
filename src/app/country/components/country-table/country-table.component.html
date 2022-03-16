@@ -1,20 +1,23 @@
 <table class="table table-hiver">
-    <thead>
-      <th>#</th>
-      <th>Bandera</th>
-      <th>Nombre</th>
-      <th>Población</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let country of countries; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td><img class="small-flag" [src]="country.flags.svg" alt=""></td>
-        <td>{{country.capital[0]}}, {{ country.name.common }}</td>
-        <td>{{ country.population | number }}</td>
-        <td>
-            <a [routerLink]="['/country', country.cca2]">Ver más...</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <th>#</th>
+    <th>Bandera</th>
+    <th>Nombre</th>
+    <th>Población</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let country of countries; let i = index"
+      class="animate__animated animate__fadeIn animate__faster"
+    >
+      <td>{{ i + 1 }}</td>
+      <td><img class="small-flag" [src]="country.flags.svg" alt="" /></td>
+      <td>{{ country.capital[0] }}, {{ country.name.common }}</td>
+      <td>{{ country.population | number }}</td>
+      <td>
+        <a [routerLink]="['/country', country.cca2]">Ver más...</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
